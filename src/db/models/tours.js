@@ -1,0 +1,112 @@
+import mongoose from 'mongoose';
+
+const hotelSchema = new mongoose.Schema(
+  {
+    name: { type: String, required: true },
+    country: { type: String, required: true },
+    city: { type: String, required: true },
+    stars: { type: Number, required: true, min: 1, max: 5 },
+    images: { type: [String], default: [] },
+    description: { type: String },
+    distanceToCenter: { type: Number, required: true },
+    amenities: {
+      type: [String],
+      enum: [
+        'Безкоштовний Wi-Fi',
+        'Басейн',
+        'Сніданок',
+        'Все включено',
+        'Безкоштовна парковка',
+        'Кондиціонер',
+        'Опалення',
+        'Сейф у номері',
+        'Пляж (перша лінія)',
+        'Приватна пляжна зона',
+        'Балкон/тераса',
+        'Вид на море',
+        'Сад',
+        'Спа та оздоровчий центр',
+        'Фітнес-центр',
+        'Сауна',
+        'Гідромасажна ванна / Джакузі',
+        'Масаж',
+        'Солярій',
+        'Хамам',
+        'Йога-класи',
+        'Кавоварка/чайник у всіх номерах',
+        'Міні-кухня',
+        'Холодильник',
+        'Бар',
+        'Ресторан',
+        'Обслуговування номерів',
+        'Доставка їжі/напоїв у номер',
+        'Сімейні номери',
+        'Дитячий басейн',
+        'Ігрова кімната',
+        'Дитячий клуб',
+        'Анімація',
+        'Дитяче ліжечко',
+        'Трансфер з/до аеропорту',
+        'Оренда авто',
+        'Шатл до/з центру',
+        'Послуги таксі',
+        'Бізнес-центр',
+        'Конференц-зал',
+        'Ко-воркінг',
+        'Цілодобова стійка реєстрації',
+        'Пральня',
+        'Послуги консьєржа',
+        'Допускається розміщення з тваринами',
+        'Безбар’єрний доступ / Для осіб з інвалідністю',
+        'Камера схову багажу',
+        'Швидкий check-in/check-out',
+      ],
+      default: [],
+    },
+  },
+  { _id: false },
+);
+
+const tourSchema = new mongoose.Schema(
+  {
+    tourTitle: { type: String, required: true },
+    tourDescription: { type: String },
+    duration: { type: Number, required: true },
+    startDate: { type: Date, required: true },
+    endDate: { type: Date, required: true },
+    price: { type: Number, required: true },
+    transport: {
+      type: String,
+      enum: ['Авіа', 'Автобус', 'Потяг', 'Без транспорту'],
+      required: true,
+    },
+    food: {
+      type: String,
+      enum: [
+        'Без харчування',
+        'Сніданок',
+        'HB (сніданок + вечеря)',
+        'AI (все включено)',
+      ],
+      required: true,
+    },
+    isHot: { type: Boolean, default: false },
+    tourImages: { type: [String], default: [] },
+    program: { type: [String], default: [] },
+
+    hotel: {
+      type: hotelSchema,
+      required: true,
+    },
+
+    slug: { type: String, unique: true, required: true },
+    tourCode: { type: String, unique: true, required: true },
+    seoTitle: { type: String },
+    seoDescription: { type: String },
+  },
+  { timestamps: true },
+);
+
+const Tour = mongoose.model('Tour', tourSchema);
+
+export default Tour;
