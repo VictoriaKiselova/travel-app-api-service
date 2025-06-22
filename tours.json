@@ -1,0 +1,103 @@
+[
+  {
+    "tourTitle": "Подорож до Іспанії",
+    "country": "Іспанія",
+    "city": "Барселона",
+    "tourDescription": "Сонячні пляжі та історичні міста",
+    "duration": 10,
+    "offsetDays": 6,
+    "startDate": "2025-08-01T00:00:00.000Z",
+    "endDate": "2025-08-11T00:00:00.000Z",
+    "price": 1350,
+    "transport": "Авіа",
+    "food": "AI (все включено)",
+    "isHot": false,
+    "tourImages": ["spain1.jpg", "spain2.jpg"],
+    "program": ["День 1: Барселона", "День 2: Валенсія"],
+    "hotel": {
+      "name": "Hotel Costa Brava",
+      "stars": 4,
+      "images": ["hotel3.jpg", "hotel4.jpg"],
+      "description": "Готель поруч з морем",
+      "distanceToCenter": 2.5,
+      "amenities": ["Безкоштовний Wi-Fi", "Басейн", "Бар"]
+    },
+    "reviews": [
+      {
+        "user": "Олена",
+        "rating": 5,
+        "comment": "Неймовірна подорож!"
+      },
+      {
+        "user": "Ігор",
+        "rating": 4,
+        "comment": "Добре, але хотілося більше вільного часу"
+      },
+      {
+        "user": "Марія",
+        "rating": 5,
+        "comment": "Барселона — топ!"
+      }
+    ],
+    "bookingsCount": 28,
+    "views": 1400,
+    "lastBookedAt": "2025-06-20T14:15:00.000Z",
+    "slug": "spain-summer-2025",
+    "tourCode": "ES20250801",
+    "seoTitle": "Літній тур до Іспанії",
+    "seoDescription": "Відпочинок на морі та яскраві враження"
+  },
+  {
+    "tourTitle": "Відкрий для себе Італію",
+    "country": "Італія",
+    "city": "Рим",
+    "tourDescription": "Незабутня подорож по Риму, Флоренції та Венеції",
+    "duration": 8,
+    "offsetDays": 14,
+    "startDate": "2025-09-10T00:00:00.000Z",
+    "endDate": "2025-09-18T00:00:00.000Z",
+    "price": 1580,
+    "transport": "Авіа",
+    "food": "HB (сніданок та вечеря)",
+    "isHot": true,
+    "tourImages": ["italy1.jpg", "italy2.jpg"],
+    "program": [
+      "День 1: Рим — екскурсія по Колізею",
+      "День 2: Ватикан та Сикстинська капела",
+      "День 3: Флоренція — місто мистецтва",
+      "День 4: Венеція — прогулянка на гондолі"
+    ],
+    "hotel": {
+      "name": "Hotel Bella Italia",
+      "stars": 5,
+      "images": ["hotel-italy1.jpg", "hotel-italy2.jpg"],
+      "description": "Розкішний готель у самому центрі Риму",
+      "distanceToCenter": 0.8,
+      "amenities": ["Спа", "Ресторан", "Фітнес-зал", "Wi-Fi"]
+    },
+    "reviews": [
+      {
+        "user": "Андрій",
+        "rating": 5,
+        "comment": "Неймовірна подорож! Все було організовано на вищому рівні"
+      },
+      {
+        "user": "Світлана",
+        "rating": 4,
+        "comment": "Готель чудовий, але багато ходили пішки"
+      },
+      {
+        "user": "Дмитро",
+        "rating": 5,
+        "comment": "Італія — моя мрія збулась!"
+      }
+    ],
+    "bookingsCount": 45,
+    "views": 1870,
+    "lastBookedAt": "2025-06-19T11:00:00.000Z",
+    "slug": "italy-september-2025",
+    "tourCode": "IT20250910",
+    "seoTitle": "Осіння подорож до Італії",
+    "seoDescription": "Екскурсії, архітектура, гастрономія — все в одному турі"
+  }
+]
