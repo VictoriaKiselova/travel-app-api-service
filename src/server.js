@@ -24,15 +24,8 @@ export const startServer = () => {
   );
   app.use(cors());
   app.use('/tours', toursRouter);
-
   app.use(notFoundTour);
-
-  app.use((err, req, res) => {
-    res.status(500).json({
-      message: 'Something went wrong',
-      error: err.message,
-    });
-  });
+  app.use(handleError);
 
   app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
