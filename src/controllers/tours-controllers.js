@@ -1,3 +1,4 @@
+import createHttpError from 'http-errors';
 import {
   getAllTours,
   getByCountry,
@@ -6,40 +7,49 @@ import {
   getToursPopular,
 } from '../services/tour-services.js';
 
-export const getAllToursController = async (req, res) => {
+export const getAllToursController = async (req, res, next) => {
   try {
     const data = await getAllTours();
+
+    if (!data) {
+      throw createHttpError(404, 'Tours not found');
+    }
+
     res.json({
       status: 200,
       data,
       message: 'Success found all tours',
     });
   } catch (error) {
-    console.error(error);
+    next(error);
   }
 };
 
-export const getToursPopularController = async (req, res) => {
+export const getToursPopularController = async (req, res, next) => {
   try {
     const data = await getToursPopular();
+
+    if (!data) {
+      throw createHttpError(404, 'Popular tours not found');
+    }
     res.json({
       status: 200,
       data,
       message: 'Success found all tours',
     });
   } catch (error) {
-    console.error(error);
+    next(error);
   }
 };
 
-export const getHotToursController = async (req, res) => {
+export const getHotToursController = async (req, res, next) => {
   try {
     const data = await getHotTours();
-    if (!data || data.length === 0) {
-      return res.status(404).json({
-        message: `Hot-tours not found`,
-      });
+
+    if (!data) {
+      throw createHttpError(404, 'Hot-tours not found');
     }
+
     res.json({
       status: 200,
       data,
@@ -49,22 +59,19 @@ export const getHotToursController = async (req, res) => {
     if (error.message.includes('Cast to ObjectId failed')) {
       error.status = 404;
     }
-    const { status = 500 } = error;
-    res.status(status).json({
-      message: error.message,
-    });
+    next(error);
   }
 };
 
-export const getByCountryController = async (req, res) => {
+export const getByCountryController = async (req, res, next) => {
   const { country } = req.params;
   try {
     const data = await getByCountry(country);
-    if (!data || data.length === 0) {
-      return res.status(404).json({
-        message: `Tours with country=${country} not found`,
-      });
+
+    if (!data) {
+      throw createHttpError(404, `Tours with country=${country} not found`);
     }
+
     res.json({
       status: 200,
       data,
@@ -74,22 +81,19 @@ export const getByCountryController = async (req, res) => {
     if (error.message.includes('Cast to ObjectId failed')) {
       error.status = 404;
     }
-    const { status = 500 } = error;
-    res.status(status).json({
-      message: error.message,
-    });
+    next(error);
   }
 };
 
-export const getTourByIdController = async (req, res) => {
+export const getTourByIdController = async (req, res, next) => {
   const { id } = req.params;
   try {
     const data = await getTourById(id);
+
     if (!data) {
-      return res.status(404).json({
-        message: `Tour with id=${id} not found`,
-      });
+      throw createHttpError(404, `Tour with id=${id} not found`);
     }
+
     res.json({
       status: 200,
       data,
@@ -99,9 +103,6 @@ export const getTourByIdController = async (req, res) => {
     if (error.message.includes('Cast to ObjectId failed')) {
       error.status = 404;
     }
-    const { status = 500 } = error;
-    res.status(status).json({
-      message: error.message,
-    });
+    next(error);
   }
 };

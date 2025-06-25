@@ -1,5 +1,11 @@
 import mongoose from 'mongoose';
 
+const foodOptionSchema = new mongoose.Schema({
+  type: { type: String, required: true },
+  description: { type: String, required: true },
+  extraPrice: { type: Number, default: 0 },
+});
+
 const reviewSchema = new mongoose.Schema({
   user: { type: String, required: true },
   rating: { type: Number, required: true, min: 1, max: 5 },
@@ -9,6 +15,7 @@ const reviewSchema = new mongoose.Schema({
 const hotelSchema = new mongoose.Schema({
   name: String,
   stars: Number,
+  foodOptions: [foodOptionSchema],
   images: [String],
   description: String,
   distanceToCenter: Number,
@@ -26,7 +33,9 @@ const tourSchema = new mongoose.Schema(
     startDate: Date,
     endDate: Date,
     price: Number,
+    childDiscount: Number,
     transport: String,
+    departureCity: [String],
     food: String,
     tourImages: [String],
     program: [String],
