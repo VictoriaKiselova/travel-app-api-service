@@ -1,4 +1,4 @@
-import Tour from '../db/models/Tours.js';
+import Tour from '../db/models/tours.js';
 import { addDynamicDates } from '../utils/addDynamicDates.js';
 
 export const getAllTours = async () => {
