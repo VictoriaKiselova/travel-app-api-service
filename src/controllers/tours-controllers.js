@@ -12,13 +12,13 @@ export const getAllToursController = async (req, res, next) => {
     const data = await getAllTours();
 
     if (!data) {
-      throw createHttpError(404, 'Tours not found');
+      throw createHttpError(404, 'Тури не знайдено');
     }
 
     res.json({
       status: 200,
       data,
-      message: 'Success found all tours',
+      message: 'Успішно знайдено всі тури',
     });
   } catch (error) {
     next(error);
@@ -30,12 +30,12 @@ export const getToursPopularController = async (req, res, next) => {
     const data = await getToursPopular();
 
     if (!data) {
-      throw createHttpError(404, 'Popular tours not found');
+      throw createHttpError(404, 'Популярні тури не знайдено');
     }
     res.json({
       status: 200,
       data,
-      message: 'Success found all tours',
+      message: 'Успішно знайдено всі популярні тури',
     });
   } catch (error) {
     next(error);
@@ -47,13 +47,13 @@ export const getHotToursController = async (req, res, next) => {
     const data = await getHotTours();
 
     if (!data) {
-      throw createHttpError(404, 'Hot-tours not found');
+      throw createHttpError(404, 'Гарячі тури не знайдено');
     }
 
     res.json({
       status: 200,
       data,
-      message: `Hot-tours find success`,
+      message: `Гарячі тури успішно знайдено`,
     });
   } catch (error) {
     if (error.message.includes('Cast to ObjectId failed')) {
@@ -69,13 +69,13 @@ export const getByCountryController = async (req, res, next) => {
     const data = await getByCountry(country);
 
     if (!data) {
-      throw createHttpError(404, `Tours with country=${country} not found`);
+      throw createHttpError(404, `Тури у країні "${country}" не знайдено`);
     }
 
     res.json({
       status: 200,
       data,
-      message: `Tour with country=${country} find success`,
+      message: `Тури у країні "${country}" успішно знайдено`,
     });
   } catch (error) {
     if (error.message.includes('Cast to ObjectId failed')) {
@@ -91,13 +91,13 @@ export const getTourByIdController = async (req, res, next) => {
     const data = await getTourById(id);
 
     if (!data) {
-      throw createHttpError(404, `Tour with id=${id} not found`);
+      throw createHttpError(404, `Тур з id=${id} не знайдено`);
     }
 
     res.json({
       status: 200,
       data,
-      message: `Tour with id=${id} find success`,
+      message: `Тур з id=${id} успішно знайдено`,
     });
   } catch (error) {
     if (error.message.includes('Cast to ObjectId failed')) {
