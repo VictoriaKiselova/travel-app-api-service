@@ -1,4 +1,4 @@
-import Tour from '../db/models/tours.js';
+import Tour from '../db/models/Tours.js';
 import { addDynamicDates } from '../utils/addDynamicDates.js';
 
 export const getAllTours = async () => {
@@ -29,7 +29,7 @@ export const getHotTours = async () => {
 
 export const getByCountry = async (country) => {
   const tours = await Tour.find({
-    country: new RegExp(`^${country.trim()}$`, 'i'),
+    country: new RegExp(`^${country.trim()}`, 'i'),
   });
   return addDynamicDates(tours);
 };

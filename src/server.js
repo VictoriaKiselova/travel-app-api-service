@@ -5,6 +5,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import { getEnvVar } from './utils/getEnvVar.js';
 import toursRouter from './routes/tours-router.js';
+import authRouter from './routes/auth-router.js';
 import notFoundTour from './middlewares/notFoundTour.js';
 import { handleError } from './middlewares/handleError.js';
 
@@ -25,6 +26,7 @@ export const startServer = () => {
   );
   app.use(cors());
   app.use('/tours', toursRouter);
+  app.use('/api/auth', authRouter);
   app.use(notFoundTour);
   app.use(handleError);
 
