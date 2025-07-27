@@ -40,6 +40,7 @@ export const signupController = async (req, res, next) => {
         'Користувач з цією електронною адресою вже існує',
       );
     }
+    console.log('Дані користувача для реєстрації:', { name, surname, email });
 
     const newUser = await signup({ name, surname, email, password });
 
