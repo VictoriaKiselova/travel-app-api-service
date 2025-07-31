@@ -12,12 +12,19 @@ const reviewSchema = new mongoose.Schema({
   comment: { type: String, required: true },
 });
 
+const transportSchema = new mongoose.Schema({
+  type: { type: String, required: true },
+  transportPrice: { type: Number, required: true },
+  departureCity: [{ type: String, required: true }],
+});
+
 const hotelSchema = new mongoose.Schema({
-  name: String,
+  name: { type: String, required: true },
   stars: Number,
+  priceDay: Number,
+  hotelDescription: String,
   foodOptions: [foodOptionSchema],
   images: [String],
-  description: String,
   distanceToCenter: Number,
   amenities: [String],
 });
@@ -25,20 +32,15 @@ const hotelSchema = new mongoose.Schema({
 const tourSchema = new mongoose.Schema(
   {
     tourTitle: { type: String, required: true },
-    country: String,
-    city: String,
-    tourDescription: String,
+    country: { type: String, required: true },
+    city: { type: String, required: true },
+    tourDescription: { type: String },
     duration: Number,
     offsetDays: Number,
     startDate: Date,
     endDate: Date,
-    price: Number,
     childDiscount: Number,
-    transport: String,
-    departureCity: [String],
-    food: String,
-    tourImages: [String],
-    program: [String],
+    transferType: [transportSchema],
     hotel: hotelSchema,
     reviews: [reviewSchema],
     bookingsCount: { type: Number, default: 0 },
